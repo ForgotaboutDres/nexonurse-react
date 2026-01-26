@@ -6,15 +6,15 @@ function QualityMetrics({ unitId, serviceLineId, level }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const loadMetrics = async () => {
+      setLoading(true);
+      const data = await fetchQualityMetrics({ unitId, serviceLineId, level });
+      setMetrics(data);
+      setLoading(false);
+    };
+    
     loadMetrics();
   }, [unitId, serviceLineId, level]);
-
-  const loadMetrics = async () => {
-    setLoading(true);
-    const data = await fetchQualityMetrics({ unitId, serviceLineId, level });
-    setMetrics(data);
-    setLoading(false);
-  };
 
   if (loading) {
     return <div className="bg-white rounded-lg shadow p-6">Loading quality metrics...</div>;

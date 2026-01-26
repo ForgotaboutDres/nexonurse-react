@@ -8,15 +8,15 @@ function PriorityQueue({ unitId }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const loadTasks = async () => {
+      setLoading(true);
+      const data = await fetchPriorityQueue(unitId, { timeframe, priority });
+      setTasks(data);
+      setLoading(false);
+    };
+    
     loadTasks();
   }, [unitId, timeframe, priority]);
-
-  const loadTasks = async () => {
-    setLoading(true);
-    const data = await fetchPriorityQueue(unitId, { timeframe, priority });
-    setTasks(data);
-    setLoading(false);
-  };
 
   const handleComplete = (taskId) => {
     // In production, this would call an API

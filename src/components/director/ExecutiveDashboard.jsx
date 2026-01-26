@@ -6,15 +6,15 @@ function ExecutiveDashboard({ serviceLineId }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const loadDashboard = async () => {
+      setLoading(true);
+      const dashboardData = await fetchExecutiveDashboard(serviceLineId);
+      setData(dashboardData);
+      setLoading(false);
+    };
+    
     loadDashboard();
   }, [serviceLineId]);
-
-  const loadDashboard = async () => {
-    setLoading(true);
-    const dashboardData = await fetchExecutiveDashboard(serviceLineId);
-    setData(dashboardData);
-    setLoading(false);
-  };
 
   if (loading) {
     return <div className="bg-white rounded-lg shadow p-6">Loading executive dashboard...</div>;

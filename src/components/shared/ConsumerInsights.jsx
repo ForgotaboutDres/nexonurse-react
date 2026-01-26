@@ -6,15 +6,15 @@ function ConsumerInsights({ unitId, serviceLineId, level }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const loadInsights = async () => {
+      setLoading(true);
+      const data = await fetchConsumerInsights({ unitId, serviceLineId, level });
+      setInsights(data);
+      setLoading(false);
+    };
+    
     loadInsights();
   }, [unitId, serviceLineId, level]);
-
-  const loadInsights = async () => {
-    setLoading(true);
-    const data = await fetchConsumerInsights({ unitId, serviceLineId, level });
-    setInsights(data);
-    setLoading(false);
-  };
 
   if (loading) {
     return <div className="bg-white rounded-lg shadow p-6">Loading consumer insights...</div>;

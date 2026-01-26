@@ -6,15 +6,15 @@ function Staffing({ unitId, serviceLineId, level }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const loadStaffing = async () => {
+      setLoading(true);
+      const data = await fetchStaffing({ unitId, serviceLineId, level });
+      setStaffing(data);
+      setLoading(false);
+    };
+    
     loadStaffing();
   }, [unitId, serviceLineId, level]);
-
-  const loadStaffing = async () => {
-    setLoading(true);
-    const data = await fetchStaffing({ unitId, serviceLineId, level });
-    setStaffing(data);
-    setLoading(false);
-  };
 
   if (loading) {
     return <div className="bg-white rounded-lg shadow p-6">Loading staffing data...</div>;
