@@ -6,7 +6,9 @@ import {
   mockQualityMetricsData,
   mockStaffingData,
   mockConsumerInsightsData,
-  mockExecutiveDashboardData
+  mockExecutiveDashboardData,
+  mockAccessMetricsData,
+  mockStaffingAlertsData
 } from './mockData';
 
 const API_DELAY = 500; // Simulate network delay
@@ -57,6 +59,16 @@ export async function fetchPerformanceHeatMap(serviceLineId) {
   await delay(API_DELAY);
   // Return heat map data
   return [];
+}
+
+export async function fetchAccessMetrics({ unitId, serviceLineId, level }) {
+  await delay(API_DELAY);
+  return mockAccessMetricsData;
+}
+
+export async function fetchStaffingAlerts({ unitId, serviceLineId, level }) {
+  await delay(API_DELAY);
+  return mockStaffingAlertsData;
 }
 
 // Add more API functions as needed
