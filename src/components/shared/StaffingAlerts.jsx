@@ -88,7 +88,7 @@ function StaffingAlerts({ unitId, serviceLineId, level }) {
         <div className="mb-6">
           <h3 className="font-semibold text-lg">Active Staffing Alerts</h3>
           <p className="text-sm text-gray-600 mt-1">
-            Risk signals and early warnings - manage detailed schedules in <a href="#" className="text-blue-600 underline hover:text-blue-700">Insight →</a>
+            Risk signals and early warnings - manage detailed schedules in Insight
           </p>
         </div>
 
