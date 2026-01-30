@@ -1,8 +1,188 @@
-// Phase 3 Mock Data - Add to your mockData.js file
+// COMPLETE mockData.js - Replace your entire mockData.js file with this
 
-// ===================================
-// ROLES DATA
-// ===================================
+// Mock User Data
+export const mockUser = {
+  id: 'user-001',
+  name: 'Sarah Chen',
+  title: 'RN, Nurse Manager',
+  unit: '4 West',
+  unitId: 'unit-4w',
+  serviceLineId: 'primary-care',
+  lastLogin: 'Today at 8:32 AM'
+};
+
+// Priority Queue Data
+export const mockPriorityQueueData = [
+  {
+    id: 'task-001',
+    category: 'Quality Metrics',
+    title: 'Complete diabetic A1C outreach for 12 patients',
+    dueDate: 'Today',
+    estimatedTime: 45,
+    priority: 'critical',
+    impact: 'High - affects monthly quality score'
+  },
+  {
+    id: 'task-002',
+    category: 'Medication Safety',
+    title: 'Review and dispose of expired RSV vaccines in Fridge A-3',
+    dueDate: 'By EOD Wednesday',
+    estimatedTime: 20,
+    priority: 'critical',
+    impact: 'Safety compliance required'
+  },
+  {
+    id: 'task-003',
+    category: 'Staffing',
+    title: 'Coordinate PM shift coverage for Thursday (2 RN call-outs)',
+    dueDate: 'Tomorrow',
+    estimatedTime: 30,
+    priority: 'high',
+    impact: 'Patient safety - staffing ratio'
+  }
+];
+
+// Quality Metrics Data
+export const mockQualityMetricsData = [
+  {
+    id: 'metric-1',
+    name: 'Diabetic A1C Control',
+    current: 68,
+    target: 75,
+    trend: 'down',
+    status: 'below',
+    description: 'Percentage of diabetic patients with A1C < 8%'
+  },
+  {
+    id: 'metric-2',
+    name: 'Post-Discharge Follow-up',
+    current: 85,
+    target: 80,
+    trend: 'up',
+    status: 'above',
+    description: 'Follow-up within 7 days of discharge'
+  },
+  {
+    id: 'metric-3',
+    name: 'Medication Adherence',
+    current: 72,
+    target: 80,
+    trend: 'neutral',
+    status: 'below',
+    description: 'Patients adherent to prescribed medications'
+  }
+];
+
+// Staffing Data
+export const mockStaffingData = {
+  today: {
+    scheduled: 12,
+    callOuts: 2,
+    actual: 10,
+    needed: 11,
+    status: 'short'
+  },
+  shifts: [
+    { shift: 'AM (7a-3p)', scheduled: 4, actual: 3, needed: 4, status: 'short' },
+    { shift: 'PM (3p-11p)', scheduled: 4, actual: 3, needed: 4, status: 'short' },
+    { shift: 'Night (11p-7a)', scheduled: 4, actual: 4, needed: 3, status: 'ok' }
+  ]
+};
+
+// Consumer Insights Data
+export const mockConsumerInsightsData = {
+  cahps: {
+    score: 82,
+    nationalAverage: 78,
+    trend: 3
+  },
+  jdPower: {
+    score: 867,
+    industryAverage: 845,
+    trend: 12
+  },
+  google: {
+    rating: 4.3,
+    totalReviews: 1247,
+    trend: 0.2
+  },
+  sentiment: {
+    positive: 72,
+    neutral: 18,
+    negative: 10
+  },
+  complaints: {
+    open: 7,
+    pending: 4,
+    resolved: 23,
+    avgResponseTime: 18
+  }
+};
+
+// Executive Dashboard Data
+export const mockExecutiveDashboardData = {
+  kpis: {
+    serviceLineAverage: 84,
+    trend: 6,
+    unitsOnTrack: 9,
+    totalUnits: 12,
+    needsAttention: 3
+  }
+};
+
+// Access Metrics Data
+export const mockAccessMetricsData = {
+  sameDayRate: 78,
+  sameDayTarget: 85,
+  sameDayTrend: 3,
+  avgWaitDays: 4.2,
+  waitTarget: 3,
+  openSlots: 23,
+  providers: 8,
+  backlog: 47,
+  oldestRequest: 12
+};
+
+// Staffing Alerts Data
+export const mockStaffingAlertsData = {
+  criticalAlerts: 2,
+  upcomingRisks: 3,
+  floatRequests: {
+    pending: 2,
+    fulfilled: 5,
+    failed: 1
+  },
+  currentCoverage: 89
+};
+
+// Weekly Priorities Data
+export const mockWeeklyPrioritiesData = {
+  author: 'Director Martinez',
+  postedDate: 'Monday 8:00 AM',
+  primaryFocus: "Diabetic care outreach needs our attention this week.",
+  urgentReminder: "RSV vaccines in Fridge A-3 expire on January 25th (Friday).",
+  staffingNote: "Next week's schedule has some gaps for PM shifts (Tue/Thu).",
+  celebration: "Great work last week on preventive care screenings!"
+};
+
+// Performance Distribution Data
+export const mockPerformanceDistributionData = {
+  units: [
+    { id: '11E', name: '11E', overallScore: 69, qualityScore: 69, performanceLevel: 'critical' },
+    { id: '10W', name: '10W', overallScore: 72, qualityScore: 72, performanceLevel: 'belowTarget' },
+    { id: '5N', name: '5N', overallScore: 92, qualityScore: 88, performanceLevel: 'excellent' }
+  ],
+  summary: {
+    excellent: 2,
+    onTrack: 4,
+    belowTarget: 2,
+    critical: 1
+  }
+};
+
+// ========================================
+// PHASE 3: ROLES DATA
+// ========================================
 export const mockRoles = [
   {
     id: 'role-super-1',
@@ -14,12 +194,9 @@ export const mockRoles = [
       'Access Metrics',
       'Staffing Alerts',
       'Consumer Insights',
-      'Complaints & Grievances',
       'Performance Distribution',
       'Weekly Priorities',
-      'Priority Queue',
-      'Team Hierarchy',
-      'Executive Dashboard'
+      'Priority Queue'
     ],
     permissions: {
       viewDashboard: true,
@@ -56,59 +233,12 @@ export const mockRoles = [
     userCount: 15,
     isSystem: true,
     createdDate: 'Jan 2026'
-  },
-  {
-    id: 'role-2',
-    name: 'Director/VP',
-    level: 'director',
-    description: 'Oversees multiple units or service line',
-    visibleMetrics: [
-      'Performance Distribution',
-      'Team Hierarchy',
-      'Weekly Priorities',
-      'Access Metrics',
-      'Consumer Insights',
-      'Executive Dashboard'
-    ],
-    permissions: {
-      viewDashboard: true,
-      editData: true,
-      manageUsers: true,
-      configureSystem: false,
-      createChecklists: true,
-      manageRoles: false
-    },
-    userCount: 8,
-    isSystem: true,
-    createdDate: 'Jan 2026'
-  },
-  {
-    id: 'role-3',
-    name: 'Charge Nurse',
-    level: 'staff',
-    description: 'Senior clinical staff with shift leadership responsibilities',
-    visibleMetrics: [
-      'Staffing Alerts',
-      'Quality Metrics',
-      'Priority Queue'
-    ],
-    permissions: {
-      viewDashboard: true,
-      editData: true,
-      manageUsers: false,
-      configureSystem: false,
-      createChecklists: false,
-      manageRoles: false
-    },
-    userCount: 24,
-    isSystem: false,
-    createdDate: 'Jan 2026'
   }
 ];
 
-// ===================================
-// CHECKLISTS DATA
-// ===================================
+// ========================================
+// PHASE 3: CHECKLISTS DATA
+// ========================================
 export const mockChecklists = [
   {
     id: 'cl-1',
@@ -116,39 +246,11 @@ export const mockChecklists = [
     description: 'Check all refrigerators and supply rooms for expired medications and supplies',
     category: 'safety',
     items: [
-      { 
-        type: 'checkbox', 
-        label: 'Check Fridge A-3 for expired vaccines', 
-        required: true 
-      },
-      { 
-        type: 'checkbox', 
-        label: 'Check medication storage room for expired items', 
-        required: true 
-      },
-      { 
-        type: 'number', 
-        label: 'Count expired items found', 
-        required: true,
-        parLevel: null,
-        min: 0,
-        max: null
-      },
-      { 
-        type: 'text', 
-        label: 'List any critical expired items found', 
-        required: false 
-      },
-      { 
-        type: 'date', 
-        label: 'Date of oldest expired item', 
-        required: false 
-      },
-      { 
-        type: 'checkbox', 
-        label: 'Document findings in safety log', 
-        required: true 
-      }
+      { type: 'checkbox', label: 'Check Fridge A-3 for expired vaccines', required: true },
+      { type: 'checkbox', label: 'Check medication storage room', required: true },
+      { type: 'number', label: 'Count expired items found', required: true, parLevel: null, min: 0, max: null },
+      { type: 'text', label: 'List any critical expired items', required: false },
+      { type: 'date', label: 'Date of oldest expired item', required: false }
     ],
     isRecurring: true,
     frequency: 'monthly',
@@ -162,290 +264,47 @@ export const mockChecklists = [
   {
     id: 'cl-2',
     name: 'Crash Cart Inspection',
-    description: 'Monthly inspection and documentation of crash cart equipment and supplies',
+    description: 'Monthly inspection of crash cart equipment',
     category: 'compliance',
     items: [
-      { 
-        type: 'checkbox', 
-        label: 'Check all medications present and not expired', 
-        required: true 
-      },
-      { 
-        type: 'checkbox', 
-        label: 'Verify defibrillator functional', 
-        required: true 
-      },
-      { 
-        type: 'number', 
-        label: 'Oxygen tank PSI level', 
-        required: true,
-        parLevel: 2000,
-        min: 1500,
-        max: 2200
-      },
-      { 
-        type: 'checkbox', 
-        label: 'Verify all supplies stocked per checklist', 
-        required: true 
-      },
-      { 
-        type: 'text', 
-        label: 'Any missing items or concerns?', 
-        required: false 
-      },
-      { 
-        type: 'date', 
-        label: 'Date inspection completed', 
-        required: true 
-      },
-      { 
-        type: 'checkbox', 
-        label: 'Sign and date inspection log', 
-        required: true 
-      }
+      { type: 'checkbox', label: 'Check all medications present', required: true },
+      { type: 'checkbox', label: 'Verify defibrillator functional', required: true },
+      { type: 'number', label: 'Oxygen tank PSI level', required: true, parLevel: 2000, min: 1500, max: 2200 },
+      { type: 'date', label: 'Date inspection completed', required: true }
     ],
     isRecurring: true,
     frequency: 'monthly',
     nextDue: 'Feb 1, 2026',
     lastSubmitted: 'Dec 28, 2025',
     requiresApproval: true,
-    assignedRoles: ['Unit Manager', 'Superuser'],
+    assignedRoles: ['Unit Manager'],
     estimatedTime: 25,
     submissionCount: 18
   },
   {
     id: 'cl-3',
     name: 'IV Supply Par Level Check',
-    description: 'Weekly check of IV supply inventory against par levels',
+    description: 'Weekly check of IV supply inventory',
     category: 'inventory',
     items: [
-      { 
-        type: 'number', 
-        label: 'IV Catheters 20g - Current Count', 
-        required: true,
-        parLevel: 50,
-        min: 40,
-        max: 60
-      },
-      { 
-        type: 'number', 
-        label: 'IV Catheters 22g - Current Count', 
-        required: true,
-        parLevel: 50,
-        min: 40,
-        max: 60
-      },
-      { 
-        type: 'number', 
-        label: 'IV Start Kits - Current Count', 
-        required: true,
-        parLevel: 25,
-        min: 20,
-        max: 30
-      },
-      { 
-        type: 'number', 
-        label: 'IV Tubing Standard - Current Count', 
-        required: true,
-        parLevel: 40,
-        min: 30,
-        max: 50
-      },
-      { 
-        type: 'number', 
-        label: 'Saline Flush 10ml - Current Count', 
-        required: true,
-        parLevel: 100,
-        min: 80,
-        max: 120
-      },
-      { 
-        type: 'checkbox', 
-        label: 'Order placed for items below par level', 
-        required: false 
-      },
-      { 
-        type: 'text', 
-        label: 'Notes on supply issues or concerns', 
-        required: false 
-      }
+      { type: 'number', label: 'IV Catheters 20g', required: true, parLevel: 50, min: 40, max: 60 },
+      { type: 'number', label: 'IV Catheters 22g', required: true, parLevel: 50, min: 40, max: 60 },
+      { type: 'number', label: 'Saline Flush 10ml', required: true, parLevel: 100, min: 80, max: 120 }
     ],
     isRecurring: true,
     frequency: 'weekly',
     nextDue: 'Feb 3, 2026',
     lastSubmitted: 'Jan 27, 2026',
     requiresApproval: false,
-    assignedRoles: ['Unit Manager', 'Charge Nurse', 'Staff RN'],
+    assignedRoles: ['Unit Manager', 'Charge Nurse'],
     estimatedTime: 15,
     submissionCount: 48
-  },
-  {
-    id: 'cl-4',
-    name: 'Quarterly Safety Equipment Audit',
-    description: 'Comprehensive safety equipment check required quarterly',
-    category: 'compliance',
-    items: [
-      { 
-        type: 'checkbox', 
-        label: 'Fire extinguishers inspected and tagged', 
-        required: true 
-      },
-      { 
-        type: 'number', 
-        label: 'Number of fire extinguishers on unit', 
-        required: true,
-        parLevel: 6,
-        min: 6,
-        max: null
-      },
-      { 
-        type: 'checkbox', 
-        label: 'Emergency lighting tested and functional', 
-        required: true 
-      },
-      { 
-        type: 'checkbox', 
-        label: 'Eyewash stations tested', 
-        required: true 
-      },
-      { 
-        type: 'date', 
-        label: 'Last evacuation drill date', 
-        required: true 
-      },
-      { 
-        type: 'text', 
-        label: 'Any safety concerns identified?', 
-        required: false 
-      },
-      { 
-        type: 'checkbox', 
-        label: 'All exit signs illuminated', 
-        required: true 
-      }
-    ],
-    isRecurring: true,
-    frequency: 'quarterly',
-    nextDue: 'April 1, 2026',
-    lastSubmitted: 'Oct 15, 2025',
-    requiresApproval: true,
-    assignedRoles: ['Unit Manager', 'Director'],
-    estimatedTime: 45,
-    submissionCount: 4
-  },
-  {
-    id: 'cl-5',
-    name: 'Annual Equipment Calibration',
-    description: 'Annual calibration check for all medical equipment',
-    category: 'quality',
-    items: [
-      { 
-        type: 'text', 
-        label: 'Equipment ID/Serial Number', 
-        required: true 
-      },
-      { 
-        type: 'text', 
-        label: 'Equipment Type', 
-        required: true 
-      },
-      { 
-        type: 'date', 
-        label: 'Last calibration date', 
-        required: true 
-      },
-      { 
-        type: 'date', 
-        label: 'Next calibration due date', 
-        required: true 
-      },
-      { 
-        type: 'checkbox', 
-        label: 'Calibration sticker applied', 
-        required: true 
-      },
-      { 
-        type: 'text', 
-        label: 'Technician name who performed calibration', 
-        required: true 
-      },
-      { 
-        type: 'checkbox', 
-        label: 'Equipment functional after calibration', 
-        required: true 
-      }
-    ],
-    isRecurring: true,
-    frequency: 'annually',
-    nextDue: 'Dec 1, 2026',
-    lastSubmitted: 'Dec 5, 2025',
-    requiresApproval: true,
-    assignedRoles: ['Superuser', 'Director'],
-    estimatedTime: 30,
-    submissionCount: 1
-  },
-  {
-    id: 'cl-6',
-    name: 'Semi-Annual Medication Room Audit',
-    description: 'Comprehensive medication storage and handling audit',
-    category: 'compliance',
-    items: [
-      { 
-        type: 'checkbox', 
-        label: 'Temperature logs reviewed and within range', 
-        required: true 
-      },
-      { 
-        type: 'number', 
-        label: 'Current fridge temperature (°F)', 
-        required: true,
-        parLevel: 38,
-        min: 36,
-        max: 46
-      },
-      { 
-        type: 'number', 
-        label: 'Controlled substances count matches log', 
-        required: true,
-        parLevel: null,
-        min: null,
-        max: null
-      },
-      { 
-        type: 'checkbox', 
-        label: 'Medication storage organized and labeled', 
-        required: true 
-      },
-      { 
-        type: 'text', 
-        label: 'Any discrepancies found?', 
-        required: false 
-      },
-      { 
-        type: 'checkbox', 
-        label: 'Look-alike/sound-alike medications separated', 
-        required: true 
-      },
-      { 
-        type: 'date', 
-        label: 'Audit completion date', 
-        required: true 
-      }
-    ],
-    isRecurring: true,
-    frequency: 'semiannually',
-    nextDue: 'June 15, 2026',
-    lastSubmitted: 'Dec 18, 2025',
-    requiresApproval: true,
-    assignedRoles: ['Unit Manager', 'Director', 'Superuser'],
-    estimatedTime: 60,
-    submissionCount: 2
   }
 ];
 
-// ===================================
-// CHECKLIST SUBMISSIONS DATA
-// ===================================
+// ========================================
+// PHASE 3: CHECKLIST SUBMISSIONS
+// ========================================
 export const mockChecklistSubmissions = {
   'cl-1': [
     {
@@ -453,26 +312,7 @@ export const mockChecklistSubmissions = {
       checklistId: 'cl-1',
       submittedBy: 'Sarah Chen, RN',
       submittedAt: 'Jan 1, 2026 10:30 AM',
-      status: 'approved',
-      responses: {
-        // Would contain actual response data
-      }
-    },
-    {
-      id: 'sub-2',
-      checklistId: 'cl-1',
-      submittedBy: 'Michael Torres',
-      submittedAt: 'Dec 1, 2025 2:15 PM',
-      status: 'approved',
-      responses: {}
-    },
-    {
-      id: 'sub-3',
-      checklistId: 'cl-1',
-      submittedBy: 'Lisa Anderson',
-      submittedAt: 'Nov 1, 2025 9:45 AM',
-      status: 'approved',
-      responses: {}
+      status: 'approved'
     }
   ],
   'cl-2': [
@@ -481,69 +321,26 @@ export const mockChecklistSubmissions = {
       checklistId: 'cl-2',
       submittedBy: 'David Martinez',
       submittedAt: 'Dec 28, 2025 3:00 PM',
-      status: 'pending',
-      responses: {}
-    }
-  ],
-  'cl-3': [
-    {
-      id: 'sub-5',
-      checklistId: 'cl-3',
-      submittedBy: 'Jennifer Adams',
-      submittedAt: 'Jan 27, 2026 11:00 AM',
-      status: 'approved',
-      responses: {}
+      status: 'pending'
     }
   ]
 };
 
-// ===================================
-// API FUNCTIONS TO ADD
-// ===================================
-
-// Add these to your api.js file:
-
-export async function fetchRoles() {
-  await delay(API_DELAY);
-  return mockRoles;
-}
-
-export async function saveRole(roleData) {
-  await delay(API_DELAY);
-  console.log('Saving role:', roleData);
-  return { success: true, roleId: `role-${Date.now()}` };
-}
-
-export async function deleteRole(roleId) {
-  await delay(API_DELAY);
-  console.log('Deleting role:', roleId);
-  return { success: true };
-}
-
-export async function fetchChecklists(filters = {}) {
-  await delay(API_DELAY);
-  let checklists = [...mockChecklists];
-  
-  if (filters.isRecurring !== undefined) {
-    checklists = checklists.filter(c => c.isRecurring === filters.isRecurring);
-  }
-  
-  return checklists;
-}
-
-export async function saveChecklist(checklistData) {
-  await delay(API_DELAY);
-  console.log('Saving checklist:', checklistData);
-  return { success: true, checklistId: `cl-${Date.now()}` };
-}
-
-export async function deleteChecklist(checklistId) {
-  await delay(API_DELAY);
-  console.log('Archiving checklist:', checklistId);
-  return { success: true };
-}
-
-export async function getChecklistSubmissions(checklistId) {
-  await delay(API_DELAY);
-  return mockChecklistSubmissions[checklistId] || [];
-}
+// ========================================
+// PHASE 3: ORG HIERARCHY
+// ========================================
+export const mockOrgHierarchy = {
+  markets: [
+    { id: 'mkt-1', name: 'Mid-Atlantic Market', code: 'MA', active: true }
+  ],
+  regions: [
+    { id: 'reg-1', name: 'Columbia Medical Center', marketId: 'mkt-1', code: 'CMC', active: true }
+  ],
+  buildings: [
+    { id: 'bld-1', name: '4 West Medical Office', regionId: 'reg-1', address: '10710 Charter Dr, Columbia, MD', active: true }
+  ],
+  serviceLines: [
+    { id: 'sl-1', name: 'Primary Care', code: 'PC', regionId: 'reg-1', active: true },
+    { id: 'sl-2', name: 'Pediatrics', code: 'PED', regionId: 'reg-1', active: true }
+  ]
+};
