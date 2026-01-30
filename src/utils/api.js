@@ -1,90 +1,115 @@
-// API utility functions
-// In production, these would call real backend APIs
+// API utility functions for NexoNurse
+// Fixed version - all imports at top
 
-import { 
+// ==========================================
+// IMPORTS - ALL AT TOP
+// ==========================================
+import {
+  mockUser,
   mockPriorityQueueData,
   mockQualityMetricsData,
   mockStaffingData,
   mockConsumerInsightsData,
-  mockExecutiveDashboardData,
   mockAccessMetricsData,
-  mockStaffingAlertsData
+  mockStaffingAlertsData,
+  mockWeeklyPrioritiesData,
+  mockPerformanceDistributionData,
+  mockExecutiveDashboardData,
+  mockRoles,
+  mockChecklists,
+  mockChecklistSubmissions,
+  mockOrgHierarchy
 } from './mockData';
 
+// ==========================================
+// CONFIG
+// ==========================================
 const API_DELAY = 500; // Simulate network delay
-
-// Simulate API call delay
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-export async function fetchPriorityQueue(unitId, filters = {}) {
+// ==========================================
+// USER API
+// ==========================================
+export async function fetchUser() {
   await delay(API_DELAY);
-  
-  let tasks = [...mockPriorityQueueData];
-  
-  // Apply filters
-  if (filters.timeframe === 'today') {
-    tasks = tasks.filter(t => t.dueDate === '2026-01-16');
-  } else if (filters.timeframe === 'week') {
-    // Keep all tasks for demo
-  }
-  
-  if (filters.priority !== 'all') {
-    tasks = tasks.filter(t => t.priority === filters.priority);
-  }
-  
-  return tasks;
+  return mockUser;
 }
 
-export async function fetchQualityMetrics({ unitId, serviceLineId, level }) {
+// ==========================================
+// PRIORITY QUEUE API
+// ==========================================
+export async function fetchPriorityQueue(filters = {}) {
+  await delay(API_DELAY);
+  return mockPriorityQueueData;
+}
+
+// ==========================================
+// QUALITY METRICS API
+// ==========================================
+export async function fetchQualityMetrics(filters = {}) {
   await delay(API_DELAY);
   return mockQualityMetricsData;
 }
 
-export async function fetchStaffing({ unitId, serviceLineId, level }) {
+// ==========================================
+// STAFFING API
+// ==========================================
+export async function fetchStaffing(filters = {}) {
   await delay(API_DELAY);
   return mockStaffingData;
 }
 
-export async function fetchConsumerInsights({ unitId, serviceLineId, level }) {
+// ==========================================
+// CONSUMER INSIGHTS API
+// ==========================================
+export async function fetchConsumerInsights(filters = {}) {
   await delay(API_DELAY);
   return mockConsumerInsightsData;
 }
 
+// ==========================================
+// ACCESS METRICS API
+// ==========================================
+export async function fetchAccessMetrics(filters = {}) {
+  await delay(API_DELAY);
+  return mockAccessMetricsData;
+}
+
+// ==========================================
+// STAFFING ALERTS API
+// ==========================================
+export async function fetchStaffingAlerts(filters = {}) {
+  await delay(API_DELAY);
+  return mockStaffingAlertsData;
+}
+
+// ==========================================
+// WEEKLY PRIORITIES API
+// ==========================================
+export async function fetchWeeklyPriorities(filters = {}) {
+  await delay(API_DELAY);
+  return mockWeeklyPrioritiesData;
+}
+
+// ==========================================
+// PERFORMANCE DISTRIBUTION API
+// ==========================================
+export async function fetchPerformanceDistribution(filters = {}) {
+  await delay(API_DELAY);
+  return mockPerformanceDistributionData;
+}
+
+// ==========================================
+// EXECUTIVE DASHBOARD API
+// ==========================================
 export async function fetchExecutiveDashboard(serviceLineId) {
   await delay(API_DELAY);
   return mockExecutiveDashboardData;
 }
 
-export async function fetchPerformanceHeatMap(serviceLineId) {
-  await delay(API_DELAY);
-  // Return heat map data
-  return [];
-}
-
-export async function fetchAccessMetrics({ unitId, serviceLineId, level }) {
-  await delay(API_DELAY);
-  return mockAccessMetricsData;
-}
-
-export async function fetchStaffingAlerts({ unitId, serviceLineId, level }) {
-  await delay(API_DELAY);
-  return mockStaffingAlertsData;
-}
 // ==========================================
-// ADD THESE TO YOUR api.js FILE
+// ROLE MANAGEMENT API
 // ==========================================
-
-// Add these imports at the top if not already there:
-import {
-  mockRoles,
-  mockChecklists,
-  mockChecklistSubmissions
-} from './mockData';
-
-// ==========================================
-// ROLE MANAGEMENT API FUNCTIONS
-// ==========================================
-
 export async function fetchRoles() {
   await delay(API_DELAY);
   return mockRoles;
@@ -103,14 +128,12 @@ export async function deleteRole(roleId) {
 }
 
 // ==========================================
-// CHECKLIST API FUNCTIONS
+// CHECKLIST API
 // ==========================================
-
 export async function fetchChecklists(filters = {}) {
   await delay(API_DELAY);
   let checklists = [...mockChecklists];
   
-  // Filter if needed
   if (filters.isRecurring !== undefined) {
     checklists = checklists.filter(c => c.isRecurring === filters.isRecurring);
   }
@@ -136,9 +159,8 @@ export async function getChecklistSubmissions(checklistId) {
 }
 
 // ==========================================
-// ORGANIZATION HIERARCHY API FUNCTIONS
+// ORG HIERARCHY API
 // ==========================================
-
 export async function fetchOrgHierarchy() {
   await delay(API_DELAY);
   return mockOrgHierarchy;
