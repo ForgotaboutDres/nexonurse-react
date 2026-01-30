@@ -1,4 +1,7 @@
-// COMPLETE mockData.js - COPY THIS ENTIRE FILE TO src/utils/mockData.js
+// ==========================================
+// COMPLETE mockData.js - ALL EXPORTS
+// Replace your entire src/utils/mockData.js with this file
+// ==========================================
 
 // ==========================================
 // USER DATA
@@ -90,18 +93,55 @@ export const mockStaffingData = {
 };
 
 // ==========================================
-// CONSUMER INSIGHTS DATA
+// CONSUMER INSIGHTS DATA (POLISHED)
 // ==========================================
 export const mockConsumerInsightsData = {
-  cahps: { score: 82, nationalAverage: 78, trend: 3 },
-  jdPower: { score: 867, industryAverage: 845, trend: 12 },
-  google: { rating: 4.3, totalReviews: 1247, trend: 0.2 }
+  cahps: {
+    score: 82,
+    nationalAverage: 78,
+    trend: 3
+  },
+  jdPower: {
+    score: 867,
+    industryAverage: 845,
+    trend: 12
+  },
+  google: {
+    rating: 4.3,
+    totalReviews: 1247,
+    trend: 0.2
+  },
+  sentiment: {
+    positive: 72,
+    positiveCount: 897,
+    neutral: 18,
+    neutralCount: 225,
+    negative: 10,
+    negativeCount: 125
+  },
+  mostPraised: [
+    { label: 'Caring nursing staff', count: 348 },
+    { label: 'Clean facilities', count: 287 },
+    { label: 'Skilled doctors', count: 265 },
+    { label: 'Quick service', count: 198 }
+  ],
+  areasForImprovement: [
+    { label: 'Long wait times', count: 89 },
+    { label: 'Parking difficulties', count: 67 },
+    { label: 'Billing confusion', count: 54 },
+    { label: 'Noise levels', count: 43 }
+  ],
+  complaints: {
+    open: 7,
+    pending: 4,
+    resolved: 23,
+    avgResponseTime: 18
+  }
 };
 
 // ==========================================
 // EXECUTIVE DASHBOARD DATA
 // ==========================================
-
 export const mockExecutiveDashboardData = {
   kpis: {
     serviceLineAverage: 84,
@@ -124,13 +164,6 @@ export const mockExecutiveDashboardData = {
       manager: 'David Chen',
       score: 89,
       highlight: 'Outstanding patient satisfaction'
-    },
-    {
-      id: 'unit-7e',
-      name: '7 East',
-      manager: 'Sarah Williams',
-      score: 87,
-      highlight: 'Strong access metrics'
     }
   ],
   needsAttention: [
@@ -141,53 +174,27 @@ export const mockExecutiveDashboardData = {
       score: 69,
       target: 75,
       issue: 'Quality metrics below target'
-    },
-    {
-      id: 'unit-10w',
-      name: '10 West',
-      manager: 'Lisa Anderson',
-      score: 72,
-      target: 75,
-      issue: 'Staffing challenges affecting performance'
     }
   ],
   keyInsights: [
     {
       title: 'Diabetic Care Trending Down',
-      description: 'Service line average for A1C control dropped from 75% to 68%. Focus needed.'
-    },
-    {
-      title: 'Staffing Pressures',
-      description: 'Multiple units reporting call-out issues. Consider float pool expansion.'
-    },
-    {
-      title: 'Patient Satisfaction Strong',
-      description: 'CAHPS scores up 3 points. Keep up the excellent work!'
+      description: 'Service line average for A1C control dropped from 75% to 68%.'
     }
   ],
   upcomingPriorities: [
-    {
-      text: 'Monthly Quality Review Meeting',
-      dueDate: 'Feb 5'
-    },
-    {
-      text: 'Budget Review for Q1',
-      dueDate: 'Feb 10'
-    },
-    {
-      text: 'Staffing Model Analysis',
-      dueDate: 'Feb 15'
-    }
+    { text: 'Monthly Quality Review Meeting', dueDate: 'Feb 5' }
   ]
 };
 
 // ==========================================
-// ACCESS METRICS DATA
+// ACCESS METRICS DATA (POLISHED)
 // ==========================================
 export const mockAccessMetricsData = {
   sameDayRate: 78,
   sameDayTarget: 85,
   sameDayTrend: 3,
+  sameDayThisWeek: 156,
   avgWaitDays: 4.2,
   waitTarget: 3,
   openSlots: 23,
@@ -200,13 +207,16 @@ export const mockAccessMetricsData = {
     urgent: 0.5
   },
   providerAvailability: [
-    { id: 1, name: 'Dr. Sarah Johnson', specialty: 'Primary Care', openSlots: 5, total: 16 },
-    { id: 2, name: 'Dr. Michael Chen', specialty: 'Primary Care', openSlots: 3, total: 16 }
+    { id: 1, name: 'Dr. Sarah Johnson', specialty: 'Primary Care', openSlots: 5, booked: 11, total: 16 },
+    { id: 2, name: 'Dr. Michael Chen', specialty: 'Primary Care', openSlots: 3, booked: 13, total: 16 },
+    { id: 3, name: 'Dr. Emily Rodriguez', specialty: 'Cardiology', openSlots: 7, booked: 9, total: 16 },
+    { id: 4, name: 'Dr. James Wilson', specialty: 'Internal Medicine', openSlots: 2, booked: 10, total: 12 },
+    { id: 5, name: 'Dr. Lisa Anderson', specialty: 'Family Medicine', openSlots: 6, booked: 14, total: 20 }
   ]
 };
 
 // ==========================================
-// STAFFING ALERTS DATA
+// STAFFING ALERTS DATA (POLISHED)
 // ==========================================
 export const mockStaffingAlertsData = {
   criticalAlerts: 2,
@@ -225,20 +235,18 @@ export const mockStaffingAlertsData = {
       severity: 'critical',
       title: 'PM Shift Coverage Gap - 2 RNs Short',
       timeframe: 'Today, 3:00 PM - 11:00 PM',
-      description: '2 call-outs for PM shift. Currently short 2 RNs.',
-      impact: 'High patient-to-nurse ratio',
-      recommendation: 'Request float pool immediately',
-      actions: ['Request Float Pool', 'View in Insight']
+      description: '2 call-outs for PM shift (3p-11p). Currently short 2 RNs. Patient load: 24 patients.',
+      impact: 'High patient-to-nurse ratio (12:1 vs target 6:1). Safety concern.',
+      recommendation: 'Request float pool immediately. Consider mandatory overtime or shift extension for AM staff.'
     },
     {
       id: 'alert-002',
-      severity: 'high',
-      title: 'Upcoming Coverage Risk - Thursday',
-      timeframe: 'Thursday, Jan 30',
-      description: '3 staff on PTO, below minimum coverage',
-      impact: 'May need to close beds',
-      recommendation: 'Review schedule and request coverage',
-      actions: ['Adjust Schedule']
+      severity: 'critical',
+      title: 'Float Pool Request Failed - ICU Overflow',
+      timeframe: 'Today, 7:00 PM - 7:00 AM',
+      description: 'Float pool request for night shift was denied due to system-wide shortage. ICU overflow needs coverage.',
+      impact: 'Unable to accommodate ICU overflow patients without additional staff.',
+      recommendation: 'Contact house supervisor. Review patient assignments.'
     }
   ]
 };
@@ -275,7 +283,7 @@ export const mockRoles = [
     id: 'role-super-1',
     name: 'System Administrator',
     level: 'superuser',
-    description: 'Full system access with ability to administrate all settings.',
+    description: 'Full system access',
     visibleMetrics: ['Quality Metrics', 'Access Metrics', 'Staffing Alerts'],
     permissions: {
       viewDashboard: true,
@@ -288,24 +296,6 @@ export const mockRoles = [
     userCount: 2,
     isSystem: true,
     createdDate: 'Jan 2026'
-  },
-  {
-    id: 'role-1',
-    name: 'Unit Manager',
-    level: 'manager',
-    description: 'Manages day-to-day operations',
-    visibleMetrics: ['Quality Metrics', 'Access Metrics', 'Staffing Alerts'],
-    permissions: {
-      viewDashboard: true,
-      editData: true,
-      manageUsers: false,
-      configureSystem: false,
-      createChecklists: false,
-      manageRoles: false
-    },
-    userCount: 15,
-    isSystem: true,
-    createdDate: 'Jan 2026'
   }
 ];
 
@@ -316,11 +306,10 @@ export const mockChecklists = [
   {
     id: 'cl-1',
     name: 'Monthly Expired Supplies Check',
-    description: 'Check all refrigerators for expired items',
+    description: 'Check refrigerators for expired items',
     category: 'safety',
     items: [
-      { type: 'checkbox', label: 'Check Fridge A-3', required: true },
-      { type: 'number', label: 'Count expired items', required: true, parLevel: null, min: 0, max: null }
+      { type: 'checkbox', label: 'Check Fridge A-3', required: true }
     ],
     isRecurring: true,
     frequency: 'monthly',
