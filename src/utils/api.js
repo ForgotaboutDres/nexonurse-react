@@ -70,5 +70,82 @@ export async function fetchStaffingAlerts({ unitId, serviceLineId, level }) {
   await delay(API_DELAY);
   return mockStaffingAlertsData;
 }
+// ==========================================
+// ADD THESE TO YOUR api.js FILE
+// ==========================================
 
-// Add more API functions as needed
+// Add these imports at the top if not already there:
+import {
+  mockRoles,
+  mockChecklists,
+  mockChecklistSubmissions
+} from './mockData';
+
+// ==========================================
+// ROLE MANAGEMENT API FUNCTIONS
+// ==========================================
+
+export async function fetchRoles() {
+  await delay(API_DELAY);
+  return mockRoles;
+}
+
+export async function saveRole(roleData) {
+  await delay(API_DELAY);
+  console.log('Saving role:', roleData);
+  return { success: true, roleId: `role-${Date.now()}` };
+}
+
+export async function deleteRole(roleId) {
+  await delay(API_DELAY);
+  console.log('Deleting role:', roleId);
+  return { success: true };
+}
+
+// ==========================================
+// CHECKLIST API FUNCTIONS
+// ==========================================
+
+export async function fetchChecklists(filters = {}) {
+  await delay(API_DELAY);
+  let checklists = [...mockChecklists];
+  
+  // Filter if needed
+  if (filters.isRecurring !== undefined) {
+    checklists = checklists.filter(c => c.isRecurring === filters.isRecurring);
+  }
+  
+  return checklists;
+}
+
+export async function saveChecklist(checklistData) {
+  await delay(API_DELAY);
+  console.log('Saving checklist:', checklistData);
+  return { success: true, checklistId: `cl-${Date.now()}` };
+}
+
+export async function deleteChecklist(checklistId) {
+  await delay(API_DELAY);
+  console.log('Archiving checklist:', checklistId);
+  return { success: true };
+}
+
+export async function getChecklistSubmissions(checklistId) {
+  await delay(API_DELAY);
+  return mockChecklistSubmissions[checklistId] || [];
+}
+
+// ==========================================
+// ORGANIZATION HIERARCHY API FUNCTIONS
+// ==========================================
+
+export async function fetchOrgHierarchy() {
+  await delay(API_DELAY);
+  return mockOrgHierarchy;
+}
+
+export async function saveOrgHierarchy(data) {
+  await delay(API_DELAY);
+  console.log('Saving org hierarchy:', data);
+  return { success: true };
+}
